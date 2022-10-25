@@ -14,7 +14,7 @@ namespace TP09.Models{
     public static List<Pais> ListarPaises(){
 
         using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select* From Pais";
+        string SQL="Select * From Pais";
             _ListaPais=db.Query<Pais>(SQL).ToList();
         }
         return _ListaPais;
@@ -22,7 +22,7 @@ namespace TP09.Models{
     public static List<Estadio> ListarEstadios(){
 
         using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select* From Estadios";
+        string SQL="Select * From Estadios";
             _ListaEstadio=db.Query<Estadio>(SQL).ToList();
         }
         return _ListaEstadio;
@@ -30,7 +30,7 @@ namespace TP09.Models{
 
     public static List<Jugador> JugadoresEquipo(int idPais){
         using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select* From Jugadores where idPais = @id";
+        string SQL="Select * From Jugadores where idPais = @id";
             _JugadorePais=db.Query<Jugador>(SQL, new {id = idPais}).ToList();
         }
         return _JugadorePais;

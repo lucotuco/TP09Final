@@ -18,7 +18,6 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult Paises(){
-
         ViewBag.Pais=BD.ListarPaises();
         return View();
     }
