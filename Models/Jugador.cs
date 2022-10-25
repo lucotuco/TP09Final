@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using System;
 namespace TP09.Models
 {
@@ -19,8 +20,10 @@ namespace TP09.Models
 
         private string _ImagenJugador;
 
+        private bool _Pegadas;
+
         public Jugador() { }
-        public Jugador(int _idJugador, int _IdPais, string _Nombre, string _Apellido, int _NumeroCamiseta, DateTime _FechaNacimiento, string _PosicionDeJuego, bool _Repetida, string _ImagenJugador)
+        public Jugador(int _idJugador, int _IdPais, string _Nombre, string _Apellido, int _NumeroCamiseta, DateTime _FechaNacimiento, string _PosicionDeJuego, bool _Repetida, string _ImagenJugador,bool _Pegadas)
         {
             _idJugador = IdJugador;
             _IdPais = IdPais;
@@ -31,6 +34,7 @@ namespace TP09.Models
             _PosicionDeJuego = PosicionDeJuego;
             _Repetida = Repetida;
             _ImagenJugador = ImagenJugador;
+            _Pegadas=Pegadas;
         }
 
         public int IdJugador
@@ -77,6 +81,11 @@ namespace TP09.Models
         {
             get { return _ImagenJugador; }
             set { ImagenJugador = value; }
+        }
+                public bool Pegadas
+        {
+            get { return _Pegadas; }
+            set { Pegadas = value; }
         }
     }
 }
