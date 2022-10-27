@@ -2,10 +2,13 @@
     ViewData["Title"] = "Paises";
 }
 
-
+    <div class="container">
+        @{int id=1;}
     @foreach (var item in ViewBag.Pais)
     {
-    <a href="view/PaginaAlbum/">
+    <a href='@Url.Action("PaginaAlbum","Home",new{idpais=id})'>
     <img class="fotos"  src="@item.bandera" alt="@item.nombre" > 
     </a>
+    id++;
     }
+        </div>

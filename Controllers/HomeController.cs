@@ -17,12 +17,13 @@ public class HomeController : Controller
     {
         return View();
     }
+    
     public IActionResult Paises(){
         ViewBag.Pais=BD.ListarPaises();
         return View();
     }
 
-    public IActionResult PaginaPais(int idPais){
+    public IActionResult PaginaAlbum(int idPais){
         ViewBag.Jugadores=BD.JugadoresEquipo(idPais);
         ViewBag.Pais=BD.PaisSeleccionado(idPais);
         return View();

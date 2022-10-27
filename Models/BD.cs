@@ -30,7 +30,7 @@ namespace TP09.Models{
 
     public static List<Jugador> JugadoresEquipo(int idPais){
         using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select * From Jugadores where idPais = @id";
+        string SQL="Select * From Jugador where idPais = @id";
             _JugadorePais=db.Query<Jugador>(SQL, new {id = idPais}).ToList();
         }
         return _JugadorePais;
