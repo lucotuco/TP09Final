@@ -40,52 +40,52 @@ namespace TP09.Models
         public int IdJugador
         {
             get { return _idJugador; }
-            set { IdJugador = value; }
+            set { _idJugador = value; }
         }
         public int IdPais
         {
             get { return _IdPais; }
-            set { IdPais = value; }
+            set { _IdPais = value; }
         }
         public string Nombre
         {
             get { return _Nombre; }
-            set { Nombre = value; }
+            set { _Nombre = value; }
         }
         public string Apellido
         {
             get { return _Apellido; }
-            set { Apellido = value; }
+            set { _Apellido = value; }
         }
         public int NumeroCamiseta
         {
             get { return _NumeroCamiseta; }
-            set { NumeroCamiseta = value; }
+            set { _NumeroCamiseta = value; }
         }
         public DateTime FechaNacimiento
         {
             get { return _FechaNacimiento; }
-            set { FechaNacimiento = value; }
+            set { _FechaNacimiento = value; }
         }
         public string PosicionDeJuego
         {
             get { return _PosicionDeJuego; }
-            set { PosicionDeJuego = value; }
+            set { _PosicionDeJuego = value; }
         }
         public bool Repetida
         {
             get { return _Repetida; }
-            set { Repetida = value; }
+            set { _Repetida = value; }
         }
         public string ImagenJugador
         {
             get { return _ImagenJugador; }
-            set { ImagenJugador = value; }
+            set { _ImagenJugador = value; }
         }
                 public bool Pegadas
         {
             get { return _Pegadas; }
-            set { Pegadas = value; }
+            set { _Pegadas = value; }
         }
     }
 }

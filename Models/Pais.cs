@@ -18,23 +18,23 @@ namespace TP09.Models{
         public int idPais
         {
             get { return _IdPais; }
-            set { idPais = value; }
+            set { _IdPais = value; }
         }
 
         public string nombre
         {
             get { return _Nombre; }
-            set { nombre = value; }
+            set { _Nombre = value; }
         }
         public string abreviacion
         {
             get { return _Abreviacion; }
-            set { abreviacion = value; }
+            set { _Abreviacion = value; }
         }
         public string bandera
         {
             get { return _Bandera; }
-            set { bandera = value; }
+            set { _Bandera = value; }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace TP09.Models{
 
     public static class BD{
-    private static string _connectionString =@"Server=A-PHZ2-CIDI-052; DataBase=TP09 ; Trusted_Connection=True";
+    private static string _connectionString =@"Server=A-PHZ2-CIDI-052; DataBase=TP09; Trusted_Connection=True";
     private static List<Pais> _ListaPais= new List<Pais>();
     private static List<Estadio> _ListaEstadio= new List<Estadio>();
     private static List<Jugador> _JugadorePais= new List<Jugador>();
@@ -14,7 +14,7 @@ namespace TP09.Models{
     public static List<Pais> ListarPaises(){
 
         using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select * From Pais";
+        string SQL="SELECT * FROM Pais";
             _ListaPais=db.Query<Pais>(SQL).ToList();
         }
         return _ListaPais;

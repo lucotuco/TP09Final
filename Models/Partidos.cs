@@ -25,27 +25,27 @@ namespace TP09.Models
         public int idPartidos
         {
             get { return _idPartidos; }
-            set { idPartidos = value; }
+            set { _idPartidos = value; }
         }
         public int IdEstadio
         {
             get { return _IdEstadio; }
-            set { IdEstadio = value; }
+            set { _IdEstadio = value; }
         }
         public int IdPais1
         {
             get { return _IdPais1; }
-            set { IdPais1 = value; }
+            set { _IdPais1 = value; }
         }
         public DateTime FechaJugar
         {
             get { return _FechaJugar; }
-            set { FechaJugar = value; }
+            set { _FechaJugar = value; }
         }
        public int IdPais2
         {
             get { return _IdPais2; }
-            set { IdPais2 = value; }
+            set { _IdPais2 = value; }
         }
        
     }

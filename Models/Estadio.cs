@@ -24,22 +24,22 @@ namespace TP09.Models
         public int IdEstadio
         {
             get { return _idEstadio; }
-            set { IdEstadio = value; }
+            set { _idEstadio = value; }
         }
         public string Nombre
         {
             get { return _Nombre; }
-            set { Nombre = value; }
+            set { _Nombre = value; }
         }
         public int Capacidad
         {
             get { return _Capacidad; }
-            set { Capacidad = value; }
+            set { _Capacidad = value; }
         }
         public int M2
         {
             get { return _M2; }
-            set { M2 = value; }
+            set { _M2 = value; }
         }
         public string FotoEstadio
         {
