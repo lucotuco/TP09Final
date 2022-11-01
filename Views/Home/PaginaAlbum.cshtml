@@ -5,14 +5,23 @@
 <div class="text-center">
     <div class=" container">
         <div class="row">
-            <div class="clo-4"></div>
-            <div class="clo-4">
+            <div class="col-4"></div>
+            <div class="col-4">
             <h1> ALMBUM</h1>
-            <a href="/home/Paises">
-            <img class="fotos"src="@ViewBag.Pais.bandera">
-            </a>
             </div>
 
+        </div>
+        <div class="row"> 
+            <div class="col-3">
+
+            </div>
+            <img class="fotosBanderas"src="@ViewBag.Pais.bandera">
+             @foreach (var item in ViewBag.Jugadores)
+             {
+                if(item.Pegadas=true){
+                <img class="fotos"  src="@item.ImagenJugador" alt="@item.Nombre" > 
+                }
+             }
         </div>
     </div>
 </div>
