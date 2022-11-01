@@ -23,6 +23,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public Jugador PaginaJugadorAjax(int IdJugador)
+    {
+        Jugador MiJugador = BD.TraerJugador(IdJugador);
+        return MiJugador;
+    }
     public IActionResult PaginaAlbum(int idPais){
         ViewBag.Jugadores=BD.JugadoresEquipo(idPais);
         ViewBag.Pais=BD.PaisSeleccionado(idPais);

@@ -35,13 +35,23 @@ namespace TP09.Models{
         }
         return _JugadorePais;
     } 
+
+        public static Jugador TraerJugador(int idJugador){
+            Jugador jugadorSeleccionado = null;
+            using (SqlConnection db =new SqlConnection(_connectionString)){
+            string SQL="Select * From Jugador where idjugador = @id";
+                jugadorSeleccionado=db.QueryFirstOrDefault<Jugador>(SQL, new {id = idJugador});
+            }
+            return jugadorSeleccionado ;
+        } 
+
         public static Pais PaisSeleccionado(int idPais){
             Pais paisSeleccionado;
-        using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select* From Pais where idPais = @id";
-            paisSeleccionado=db.QueryFirstOrDefault<Pais>(SQL, new {id = idPais});
-        }
-        return paisSeleccionado ;
-    } 
+            using (SqlConnection db =new SqlConnection(_connectionString)){
+            string SQL="Select* From Pais where idPais = @id";
+                paisSeleccionado=db.QueryFirstOrDefault<Pais>(SQL, new {id = idPais});
+            }
+            return paisSeleccionado ;
+        } 
     }
 }

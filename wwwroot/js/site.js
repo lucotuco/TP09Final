@@ -6,7 +6,7 @@ function MostrarMasInfo(IdJ)
 {
     $.ajax(
         {
-            url:'/Home/VerMasInfo',
+            url:'/Home/PaginaJugadorAjax',
             data:{ IdJugador: IdJ },
             type: 'GET',
             dataType: 'JSON',
@@ -14,7 +14,9 @@ function MostrarMasInfo(IdJ)
                 function(response)
                 {
                     $("#ModalTitle").text(response.nombre);
-                    //$("#ModalBody").html("Año de estreno: "+ response.añoInicio + "<br>" + response.sinopsis);
+                    $("#ModalBody").html("Nombre:"+ response.nombre + "<br>" +"Apellido: "+ response.apellido + "<br>"+ "Año de nacimiento: "+ response.fechaNacimiento.substr(0,10) +"<br>" +"Numero de camiseta: "+ response.numeroCamiseta +"<br>"+"Posicion: "+ response.posicionDeJuego);
+                   
+                   
                 }
         }
     );
