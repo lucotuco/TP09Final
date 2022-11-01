@@ -15,8 +15,7 @@ function MostrarMasInfo(IdJ)
                 {
                     $("#ModalTitle").text(response.nombre);
                     $("#ModalBody").html("Nombre:"+ response.nombre + "<br>" +"Apellido: "+ response.apellido + "<br>"+ "Año de nacimiento: "+ response.fechaNacimiento.substr(0,10) +"<br>" +"Numero de camiseta: "+ response.numeroCamiseta +"<br>"+"Posicion: "+ response.posicionDeJuego);
-                   
-                   
+
                 }
         }
     );
