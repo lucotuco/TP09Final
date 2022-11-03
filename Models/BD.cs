@@ -3,55 +3,80 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
 using System.Collections.Generic;
-namespace TP09.Models{
+namespace TP09.Models
+{
 
-    public static class BD{
-    private static string _connectionString =@"Server=A-PHZ2-CIDI-041; DataBase=TP09; Trusted_Connection=True";
-    private static List<Pais> _ListaPais= new List<Pais>();
-    private static List<Estadio> _ListaEstadio= new List<Estadio>();
-    private static List<Jugador> _JugadorePais= new List<Jugador>();
+    public static class BD
+    {
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-041; DataBase=TP09; Trusted_Connection=True";
+        private static List<Pais> _ListaPais = new List<Pais>();
+        private static List<Estadio> _ListaEstadio = new List<Estadio>();
+        private static List<Jugador> _JugadorePais = new List<Jugador>();
+        private static List<Jugador> _JugadoresPaquete = new List<Jugador>();
 
-    public static List<Pais> ListarPaises(){
 
-        using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="SELECT * FROM Pais";
-            _ListaPais=db.Query<Pais>(SQL).ToList();
+        public static List<Pais> ListarPaises()
+        {
+
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "SELECT * FROM Pais";
+                _ListaPais = db.Query<Pais>(SQL).ToList();
+            }
+            return _ListaPais;
         }
-        return _ListaPais;
-    }
-    public static List<Estadio> ListarEstadios(){
+        public static List<Estadio> ListarEstadios()
+        {
 
-        using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select * From Estadios";
-            _ListaEstadio=db.Query<Estadio>(SQL).ToList();
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select * From Estadios";
+                _ListaEstadio = db.Query<Estadio>(SQL).ToList();
+            }
+            return _ListaEstadio;
         }
-        return _ListaEstadio;
-    }
 
-    public static List<Jugador> JugadoresEquipo(int idPais){
-        using (SqlConnection db =new SqlConnection(_connectionString)){
-        string SQL="Select * From Jugador where idPais = @id ";
-            _JugadorePais=db.Query<Jugador>(SQL, new {id = idPais}).ToList();
+        public static List<Jugador> JugadoresEquipo(int idPais)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select * From Jugador where idPais = @id ";
+                _JugadorePais = db.Query<Jugador>(SQL, new { id = idPais }).ToList();
+            }
+            return _JugadorePais;
         }
-        return _JugadorePais;
-    } 
 
-        public static Jugador TraerJugador(int idJugador){
+        public static Jugador TraerJugador(int idJugador)
+        {
             Jugador jugadorSeleccionado = null;
-            using (SqlConnection db =new SqlConnection(_connectionString)){
-            string SQL="Select * From Jugador where idjugador = @id";
-                jugadorSeleccionado=db.QueryFirstOrDefault<Jugador>(SQL, new {id = idJugador});
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select * From Jugador where idjugador = @id";
+                jugadorSeleccionado = db.QueryFirstOrDefault<Jugador>(SQL, new { id = idJugador });
             }
-            return jugadorSeleccionado ;
-        } 
+            return jugadorSeleccionado;
+        }
 
-        public static Pais PaisSeleccionado(int idPais){
+        public static Pais PaisSeleccionado(int idPais)
+        {
             Pais paisSeleccionado;
-            using (SqlConnection db =new SqlConnection(_connectionString)){
-            string SQL="Select* From Pais where idPais = @id";
-                paisSeleccionado=db.QueryFirstOrDefault<Pais>(SQL, new {id = idPais});
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select* From Pais where idPais = @id";
+                paisSeleccionado = db.QueryFirstOrDefault<Pais>(SQL, new { id = idPais });
             }
-            return paisSeleccionado ;
-        } 
+            return paisSeleccionado;
+        }
+
+        public static List<Jugador> PaqueteFigus(){
+            
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0)";
+                _JugadoresPaquete = db.Query<Jugador>(SQL).ToList();
+
+            }
+            return _JugadoresPaquete;
+        }
     }
 }

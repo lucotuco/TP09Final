@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Paquetes";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <img class="TapaMundial" src="https://http2.mlstatic.com/D_NQ_NP_859267-MLA51266807628_082022-O.jpg"
+                alt="Paquete mundial">
+        </div>
+        @foreach (var item in ViewBag.Jugadores)
+        {
+        <img class="fotos" src="@ViewBag.Jugadores.ImagenJugador" alt="@ViewBag.Jugadores.Nombre"  data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@ViewBag.Jugadores.IdJugador)"> 
+            
+        }
+        
+        
+    </div>
+</div>
