@@ -91,5 +91,13 @@ namespace TP09.Models
             }
             return _Jugadores;
         }
+
+        public static void PegarFigus(int idJugador){
+             string SQL = "UPDATE INTO Jugador(Pegadas) VALUE (1) WHERE idJugador=@pIdjugador";
+             using(SqlConnection db = new SqlConnection(_connectionString))
+             {
+                db.Execute(SQL,new {pIdJugador = idJugador});
+             }
+        }
     }
 }

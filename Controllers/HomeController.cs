@@ -41,10 +41,11 @@ public class HomeController : Controller
         ViewBag.Jugadores = BD.PaqueteFigus();
         return View("Paquete");
     }
-    public IActionResult MisFigurs(){
+    public IActionResult MisFigus(){
         ViewBag.TodosJugadores=BD.TodosJugadores();
-        return View();
+        return View("MisFigus");
     }
+
     public IActionResult Privacy()
     {
         return View();
