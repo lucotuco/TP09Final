@@ -45,6 +45,10 @@ public class HomeController : Controller
         ViewBag.TodosJugadores=BD.TodosJugadores();
         return View("MisFigus");
     }
+    public IActionResult PegarFigus(int idJugador){
+        BD.PegarFigus(idJugador);
+        return View("Index");
+    }
 
     public IActionResult Privacy()
     {
