@@ -8,11 +8,13 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-041; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-049; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
         private static List<Jugador> _JugadoresPaquete = new List<Jugador>();
+        private static List<Jugador> _Jugadores = new List<Jugador>();
+
 
 
         public static List<Pais> ListarPaises()
@@ -72,11 +74,22 @@ namespace TP09.Models
             
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string SQL = "Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0) or idjugador = ROUND( RAND()*(10-5)+5,0)";
+                string SQL = "exec PaqueteFiguritas 1";
                 _JugadoresPaquete = db.Query<Jugador>(SQL).ToList();
 
             }
             return _JugadoresPaquete;
+        }
+
+        public static List<Jugador> TodosJugadores( )
+        {
+            
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string SQL = "Select * From Jugador where Repetida=1";
+                _Jugadores = db.Query<Jugador>(SQL).ToList();
+            }
+            return _Jugadores;
         }
     }
 }

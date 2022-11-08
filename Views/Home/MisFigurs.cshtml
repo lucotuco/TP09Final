@@ -5,26 +5,16 @@
 <div class="text-center">
     <div class=" container">
         <div class="row">
-            <div class="col-4"></div>
             <div class="col-4">
-            <h1> ALMBUM</h1>
+                @foreach (var item in ViewBag.TodosJugadores)
+                {
+                    <img class="foto" src="@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador)">
+                }
             </div>
 
-        </div>
-        <div class="row"> 
-            <div class="col-3">
-            </div>
-            <img class="fotosBanderas"src="@ViewBag.Pais.bandera">
-             @foreach (var item in ViewBag.Jugadores)
-             {
-                if(item.Pegadas==true ){
-                <img class="fotos" src="@item.ImagenJugador" alt="@item.Nombre"  data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador)"> 
-                }
-             }
         </div>
     </div>
 </div>
-
 
 <!--MODAAAAAAAAAAAAAAAAAAAAAAL-->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,6 +26,7 @@
       </div>
       <div class="modal-body" id="ModalBody"></div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Pegar</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>

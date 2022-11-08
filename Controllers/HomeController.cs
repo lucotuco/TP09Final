@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.Design;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP09.Models;
 
@@ -37,8 +38,12 @@ public class HomeController : Controller
     }
     public IActionResult FigusPaquete()
     {
-         ViewBag.Jugadores = BD.PaqueteFigus();
+        ViewBag.Jugadores = BD.PaqueteFigus();
         return View("Paquete");
+    }
+    public IActionResult MisFigurs(){
+        ViewBag.TodosJugadores=BD.TodosJugadores();
+        return View();
     }
     public IActionResult Privacy()
     {
