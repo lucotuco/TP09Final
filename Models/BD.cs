@@ -74,7 +74,7 @@ namespace TP09.Models
             
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string SQL = "Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(10-5)+5,0)";
+                string SQL = "Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0)";
                 _JugadoresPaquete = db.Query<Jugador>(SQL).ToList();
             }
             return _JugadoresPaquete;
@@ -93,6 +93,13 @@ namespace TP09.Models
 
         public static void PegarFigus(int idJugador){
              string SQL = "UPDATE Jugador SET Pegadas=1 WHERE idJugador=@pIdjugador";
+             using(SqlConnection db = new SqlConnection(_connectionString))
+             {
+                db.Execute(SQL,new {pIdJugador = idJugador});
+             }
+        }
+        public static void FigusRepetidas(int idJugador){
+             string SQL = "UPDATE Jugador SET Repetida=1 WHERE idJugador=@pIdjugador";
              using(SqlConnection db = new SqlConnection(_connectionString))
              {
                 db.Execute(SQL,new {pIdJugador = idJugador});

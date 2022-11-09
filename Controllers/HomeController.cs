@@ -39,6 +39,7 @@ public class HomeController : Controller
     public IActionResult FigusPaquete()
     {
         ViewBag.Jugadores = BD.PaqueteFigus();
+        
         return View("Paquete");
     }
     public IActionResult MisFigus(){
