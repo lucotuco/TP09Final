@@ -39,7 +39,10 @@ public class HomeController : Controller
     public IActionResult FigusPaquete()
     {
         ViewBag.Jugadores = BD.PaqueteFigus();
-        
+        foreach (var item in ViewBag.Jugadores)
+        {
+            BD.FigusRepetidas(item.idJugador);
+        }
         return View("Paquete");
     }
     public IActionResult MisFigus(){
