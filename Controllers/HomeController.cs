@@ -1,12 +1,22 @@
 ﻿using System.ComponentModel.Design;
+using System.IO.Compression;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 using TP09.Models;
 
 namespace TP09.Controllers;
 
 public class HomeController : Controller
 {
+    private IWebHostEnvironment Enviroment;
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -41,16 +51,41 @@ public class HomeController : Controller
         ViewBag.Jugadores = BD.PaqueteFigus();
         foreach (var item in ViewBag.Jugadores)
         {
-            BD.FigusRepetidas(item.idJugador);
+            BD.FigusRepetidas(item.IdJugador);
         }
         return View("Paquete");
     }
-    public IActionResult MisFigus(){
-        ViewBag.TodosJugadores=BD.TodosJugadores();
+    public IActionResult MisFigus()
+    {
+        ViewBag.TodosJugadores = BD.TodosJugadores();
         return View("MisFigus");
     }
-    public IActionResult PegarFigus(int idJugador){
+    public IActionResult PegarFigus(int idJugador)
+    {
         BD.PegarFigus(idJugador);
+        return View("Index");
+    }
+
+    public IActionResult AgregarJugador(int IdEquipo)
+    {
+        ViewBag.IdEquipo = IdEquipo;
+        return View();
+    }
+    [HttpPost]
+    public ActionResult GuardarJugador(Jugador Jugador, IFormFile Foto)
+    {
+        if (Foto.Length > 0)
+        {
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\Img\" + Foto.FileName;
+            using (var stream = System.IO.File.Create(wwwRootLocal))
+            {
+                Foto.CopyTo(stream);
+                Jugador.ImagenJugador = Foto.FileName;
+            }
+        }
+        BD.AgregarJugador(Jugador);
+
+
         return View("Index");
     }
 

@@ -8,7 +8,7 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-009; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-048; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
@@ -70,19 +70,20 @@ namespace TP09.Models
             return paisSeleccionado;
         }
 
-        public static List<Jugador> PaqueteFigus(){
-            
+        public static List<Jugador> PaqueteFigus()
+        {
+
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string SQL = "Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0) UNION Select * From Jugador where idjugador = ROUND( RAND()*(26-5)+5,0)";
+                string SQL = "SELECT TOP 5 * FROM Jugador ORDER BY NewID()";
                 _JugadoresPaquete = db.Query<Jugador>(SQL).ToList();
             }
             return _JugadoresPaquete;
         }
 
-        public static List<Jugador> TodosJugadores( )
+        public static List<Jugador> TodosJugadores()
         {
-            
+
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 string SQL = "Select * From Jugador where Repetida=1";
@@ -91,19 +92,29 @@ namespace TP09.Models
             return _Jugadores;
         }
 
-        public static void PegarFigus(int idJugador){
-             string SQL = "UPDATE Jugador SET Pegadas=1 WHERE idJugador=@pIdjugador";
-             using(SqlConnection db = new SqlConnection(_connectionString))
-             {
-                db.Execute(SQL,new {pIdJugador = idJugador});
-             }
+        public static void PegarFigus(int idJugador)
+        {
+            string SQL = "UPDATE Jugador SET Pegadas=1 WHERE idJugador=@pIdjugador";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new { pIdJugador = idJugador });
+            }
         }
-        public static void FigusRepetidas(int idJugador){
-             string SQL = "UPDATE Jugador SET Repetida=1 WHERE idJugador=@pIdjugador";
-             using(SqlConnection db = new SqlConnection(_connectionString))
-             {
-                db.Execute(SQL,new {pIdJugador = idJugador});
-             }
+        public static void FigusRepetidas(int idJugador)
+        {
+            string SQL = "UPDATE Jugador SET Repetida=1 WHERE idJugador=@pIdjugador";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new { pIdJugador = idJugador });
+            }
+        }
+        public static void AgregarJugador(Jugador Jug)
+        {
+            string SQL = "INSERT INTO Jugadores (IdPais,Nombre,Apellido,NumeroCamiseta,FechaNacimiento,PosicionDeJuego,ImagenJugador) VALUES(@pidPais,@pNombre,@pApellido,@pNumeroCamiseta,@pFechaNacimiento,@pPosicionDeJuego,1,@pImagenJugadro,0)";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new { pidPais = Jug.IdPais, pNombre = Jug.Nombre,pApellido = Jug.Apellido,pNumeroCamiseta=Jug.NumeroCamiseta, pFechaNacimiento = Jug.FechaNacimiento, pPosicionDeJuego = Jug.PosicionDeJuego,pImagenJugador=Jug.ImagenJugador });
+            }
         }
     }
 }

@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Agregar Jugador";
+}
+
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="card">
+                <div class="card-body" style="background-color:#b8860b;">
+                   <form method="post" action='@Url.Action("GuardarJugador","Home") 'enctype="multipart/form-data">
+                    <input class="form-control" type="text"  name="Nombre" maxlength="30" placeholder="Nombre" size="20"/>
+                    <br>
+                    <input class="form-control" type="text"  name="EquipoActual" maxlength="30" placeholder="Equipo Actual" size="20"/>
+                    <br>
+                    <input  class="form-control" type="date"  name="FechaNacimiento"/>
+                    <br>
+                    <input class="form-control" type="file" name="Foto"/>
+                    <input type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo" />
+                    <br>
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                </form>
+                </div>
+            </div>
+
+            </div>
+    
+    </div>
+
+        </div>
+
+
+</div>
