@@ -19,9 +19,8 @@ public class HomeController : Controller
     private IWebHostEnvironment Enviroment;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
+    public HomeController(IWebHostEnvironment enviroment){
+        Enviroment=enviroment;
     }
 
     public IActionResult Index()
@@ -66,24 +65,28 @@ public class HomeController : Controller
         return View("Index");
     }
 
+    public IActionResult CrearJugador(){
+
+        return View();
+    }
     public IActionResult AgregarJugador(int IdEquipo)
     {
         ViewBag.IdEquipo = IdEquipo;
         return View();
     }
     [HttpPost]
-    public ActionResult GuardarJugador(Jugador Jugador, IFormFile Foto)
+    public ActionResult GuardarJugador(Jugador Jug, IFormFile ImagenJugador)
     {
-        if (Foto.Length > 0)
+        if (ImagenJugador.Length > 0)
         {
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\Img\" + Foto.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\Img\" + ImagenJugador.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
-                Foto.CopyTo(stream);
-                Jugador.ImagenJugador = Foto.FileName;
+                ImagenJugador.CopyTo(stream);
+                Jug.ImagenJugador = ImagenJugador.FileName;
             }
         }
-        BD.AgregarJugador(Jugador);
+        BD.AgregarJugador(Jug);
 
 
         return View("Index");
