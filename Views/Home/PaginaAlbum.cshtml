@@ -17,9 +17,17 @@
             <img class="fotosBanderas"src="@ViewBag.Pais.bandera">
              @foreach (var item in ViewBag.Jugadores)
              {
+              <div class="col-4">
+                @{
                 if(item.Pegadas==true ){
                 <img class="fotos" src="@item.ImagenJugador" alt="@item.Nombre"  data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador)"> 
                 }
+                else{
+                  <img class="figuritas" src="/Img/PlaceHolder.jpg">
+                }
+                }
+                
+              </div>
              }
         </div>
     </div>
