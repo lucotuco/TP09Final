@@ -6,10 +6,12 @@
   <div class=" container">
     <div class="row">
       <div class="col-4">
+        
         @foreach (var item in ViewBag.TodosJugadores)
         {
           <img class="foto" src="@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
           data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador)">
+          
         }
       </div>
 
@@ -27,7 +29,7 @@
       </div>
       <div class="modal-body" id="ModalBody"></div>
       <div class="modal-footer">
-        <a href='@Url.Action("PegarFigus","Home",new{IdJugador=@ViewBag.IdJugador})' class="btn btn-primary">PEGAAAAAAAAAAR</a>
+        <a  class="btn btn-primary" id="BotonPegar">Pegar</a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
