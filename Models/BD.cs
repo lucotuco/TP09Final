@@ -8,7 +8,7 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CEO-006; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-LUM-09; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
@@ -110,10 +110,10 @@ namespace TP09.Models
         }
         public static void AgregarJugador(Jugador Jug)
         {
-            string SQL = "INSERT INTO Jugadores (IdPais,Nombre,Apellido,NumeroCamiseta,FechaNacimiento,PosicionDeJuego,ImagenJugador) VALUES(@pidPais,@pNombre,@pApellido,@pNumeroCamiseta,@pFechaNacimiento,@pPosicionDeJuego,1,@pImagenJugadro,0)";
+            string SQL = "INSERT INTO Jugador (IdPais,Nombre,Apellido,NumeroCamiseta,FechaNacimiento,PosicionDeJuego,Repetida,ImagenJugador,Pegadas) VALUES(@pidPais,@pNombre,@pApellido,@pNumeroCamiseta,@pFechaNacimiento,@pPosicionDeJuego,1,@pImagenJugador,0)";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                db.Execute(SQL, new { pidPais = Jug.IdPais, pNombre = Jug.Nombre,pApellido = Jug.Apellido,pNumeroCamiseta=Jug.NumeroCamiseta, pFechaNacimiento = Jug.FechaNacimiento, pPosicionDeJuego = Jug.PosicionDeJuego,pImagenJugador=Jug.ImagenJugador });
+                db.Execute(SQL, new {pidPais = Jug.IdPais, pNombre = Jug.Nombre,pApellido = Jug.Apellido,pNumeroCamiseta=Jug.NumeroCamiseta, pFechaNacimiento = Jug.FechaNacimiento, pPosicionDeJuego = Jug.PosicionDeJuego,pImagenJugador=Jug.ImagenJugador });
             }
         }
     }
