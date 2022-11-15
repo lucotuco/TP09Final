@@ -8,7 +8,7 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-015; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-0; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
@@ -114,6 +114,16 @@ namespace TP09.Models
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 db.Execute(SQL, new {pidPais = Jug.IdPais, pNombre = Jug.Nombre,pApellido = Jug.Apellido,pNumeroCamiseta=Jug.NumeroCamiseta, pFechaNacimiento = Jug.FechaNacimiento, pPosicionDeJuego = Jug.PosicionDeJuego,pImagenJugador=Jug.ImagenJugador });
+            }
+        }
+
+
+        public static void TraerPorcentaje()
+        {
+            string SQL = "SELECT Count * From Jugador Where Pegadas=1";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new { pIdJugador = idJugador });
             }
         }
     }
