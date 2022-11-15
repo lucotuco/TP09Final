@@ -30,8 +30,12 @@ body {
   width: 70%;
   height: 70%;
   margin-bottom: 5%;
+  margin-top:5%;
 }
 .TapaMundial{
   width: 90%;
   height: 95%;
+}
+.grad {
+  background-image: linear-gradient(to bottom right, rgb(117, 13, 13), rgb(160, 153, 153));
 }
