@@ -37,7 +37,12 @@ public class HomeController : Controller
     public Jugador PaginaJugadorAjax(int IdJugador)
     {
         Jugador MiJugador = BD.TraerJugador(IdJugador);
+        Pais MiPais = BD.PaisSeleccionado(MiJugador.IdPais);
         return MiJugador;
+    }
+    public Pais DevolverPais(int IdPais){
+        Pais pais = BD.PaisSeleccionado(IdPais);
+        return pais;
     }
     public IActionResult PaginaAlbum(int idPais)
     {

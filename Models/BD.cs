@@ -8,7 +8,7 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-LUM-09; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-015; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
