@@ -25,7 +25,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
+        ViewBag.Porcentaje=BD.TraerPorcentaje();
         return View();
     }
 
