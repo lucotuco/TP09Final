@@ -14,8 +14,7 @@ namespace TP09.Models
         private static List<Jugador> _JugadorePais = new List<Jugador>();
         private static List<Jugador> _JugadoresPaquete = new List<Jugador>();
         private static List<Jugador> _Jugadores = new List<Jugador>();
-
-        private static float Porcentaje;
+        private static double Porcentaje;
 
 
         public static List<Pais> ListarPaises()
@@ -119,12 +118,12 @@ namespace TP09.Models
         }
 
 
-        public static float TraerPorcentaje()
+        public static double TraerPorcentaje()
         {
             string SQL = "SELECT ROUND(CAST((SELECT COUNT(*) FROM Jugador WHERE Pegadas = 1) AS decimal ) *100 / COUNT(*), 1) FROM Jugador ";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                Porcentaje=db.Execute(SQL);
+                Porcentaje=db.QueryFirstOrDefault<double>(SQL);
             }
             return Porcentaje;
         }
