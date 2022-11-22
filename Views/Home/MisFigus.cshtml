@@ -6,7 +6,9 @@
   <div class=" container">
     <div class="row">
       
-          @{string caracteres;}
+          @{string caracteres;
+          int figus;
+          figus=0;}
         
         @foreach (var item in ViewBag.TodosJugadores)
         { 
@@ -16,15 +18,21 @@
           <img class="figuritas" src="/img/@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
           data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
           </div>
+          figus++;
           }
           else{
           <div class="col-3">
           <img class="figuritas" src="@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
           data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
           </div>
+          figus++;
           }
 
         }
+        @{if (figus==0)
+        {
+          <h1>No tenes figuritas, abri un paquete en la home</h1>
+        }}
 
 
     </div>

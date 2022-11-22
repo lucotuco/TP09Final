@@ -32,12 +32,14 @@ public class HomeController : Controller
 
     public IActionResult Paises()
     {
+        ViewBag.Porcentaje=BD.TraerPorcentaje();
         ViewBag.Pais = BD.ListarPaises();
         return View();
     }
 
     public Jugador PaginaJugadorAjax(int IdJugador)
     {
+        
         Jugador MiJugador = BD.TraerJugador(IdJugador);
         Pais MiPais = BD.PaisSeleccionado(MiJugador.IdPais);
         return MiJugador;
@@ -63,21 +65,27 @@ public class HomeController : Controller
     }
     public IActionResult MisFigus()
     {
+                ViewBag.Porcentaje=BD.TraerPorcentaje();
+
         ViewBag.TodosJugadores = BD.TodosJugadores();
         return View("MisFigus");
     }
     public IActionResult PegarFigus(int idJugador)
     {
+                ViewBag.Porcentaje=BD.TraerPorcentaje();
+
         BD.PegarFigus(idJugador);
         return View("Index");
     }
 
     public IActionResult CrearJugador(){
+                ViewBag.Porcentaje=BD.TraerPorcentaje();
 
         return View();
     }
     public IActionResult AgregarJugador(int IdEquipo)
-    {
+    {        ViewBag.Porcentaje=BD.TraerPorcentaje();
+
         ViewBag.IdEquipo = IdEquipo;
         return View();
     }
@@ -93,6 +101,8 @@ public class HomeController : Controller
                 Jug.ImagenJugador = ImagenJugador.FileName;
             }
         }
+                ViewBag.Porcentaje=BD.TraerPorcentaje();
+
         BD.AgregarJugador(Jug);
         return View("Index");
     }
