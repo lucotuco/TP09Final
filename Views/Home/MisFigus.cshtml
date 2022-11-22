@@ -5,40 +5,37 @@
 <div class="text-center">
   <div class=" container">
     <div class="row">
-      
-          @{string caracteres;
-          int figus;
-          figus=0;}
-        
-        @foreach (var item in ViewBag.TodosJugadores)
-        { 
-          caracteres=item.ImagenJugador.Substring(0,5);
-          if(caracteres!= "https"){
-            <div class="col-3">
-          <img class="figuritas" src="/img/@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
-          data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
-          </div>
-          figus++;
-          }
-          else{
+
+      @{
+        string caracteres;
+        int figus;
+        figus = 0;
+      }
+
+      @foreach (var item in ViewBag.TodosJugadores)
+      {
+        caracteres = item.ImagenJugador.Substring(0, 5);
+        string imgH = "";
+        string borde="";
+        if (caracteres != "https") { imgH = "/img/"; }
+        if (item.Pegadas == true) { borde="border:2px solid green;"; }
+
           <div class="col-3">
-          <img class="figuritas" src="@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
-          data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
+            <img class="figuritas" src="@(imgH+item.ImagenJugador)" alt="@item.Nombre" data-bs-toggle="modal"
+              data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais,'@item.Pegadas')" style="@borde">
           </div>
           figus++;
-          }
 
-        }
-        @{if (figus==0)
+      }
+      @{
+        if (figus == 0)
         {
-          <h1>No tenes figuritas, abri un paquete en la home</h1>
-        }}
-
-
+          <h1 style="color:white ;">No tenes figuritas, abri un paquete en la home</h1>
+        }
+      }
     </div>
   </div>
 </div>
-
 <!--MODAAAAAAAAAAAAAAAAAAAAAAL-->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -49,7 +46,8 @@
       </div>
       <div class="modal-body" id="ModalBody"></div>
       <div class="modal-footer">
-        <a  class="btn btn-primary" id="BotonPegar">Pegar</a>
+          <a class="btn btn-primary" id="BotonPegar">Pegar</a>
+        
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>

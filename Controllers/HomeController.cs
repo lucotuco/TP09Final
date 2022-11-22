@@ -65,7 +65,7 @@ public class HomeController : Controller
     }
     public IActionResult MisFigus()
     {
-                ViewBag.Porcentaje=BD.TraerPorcentaje();
+        ViewBag.Porcentaje=BD.TraerPorcentaje();
 
         ViewBag.TodosJugadores = BD.TodosJugadores();
         return View("MisFigus");
@@ -101,8 +101,7 @@ public class HomeController : Controller
                 Jug.ImagenJugador = ImagenJugador.FileName;
             }
         }
-                ViewBag.Porcentaje=BD.TraerPorcentaje();
-
+        
         BD.AgregarJugador(Jug);
         return View("Index");
     }

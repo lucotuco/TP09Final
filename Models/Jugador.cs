@@ -82,7 +82,7 @@ namespace TP09.Models
             get { return _ImagenJugador; }
             set { _ImagenJugador = value; }
         }
-                public bool Pegadas
+        public bool Pegadas
         {
             get { return _Pegadas; }
             set { _Pegadas = value; }
