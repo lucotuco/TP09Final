@@ -6,15 +6,26 @@
   <div class=" container">
     <div class="row">
       
+          @{string caracteres;}
         
         @foreach (var item in ViewBag.TodosJugadores)
-        {
+        { 
+          caracteres=item.ImagenJugador.Substring(0,5);
+          if(caracteres!= "https"){
+            <div class="col-3">
+          <img class="figuritas" src="/img/@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
+          data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
+          </div>
+          }
+          else{
           <div class="col-3">
           <img class="figuritas" src="@item.ImagenJugador" alt="@item.Nombre" data-bs-toggle="modal"
           data-bs-target="#exampleModal2" onclick="MostrarMasInfo(@item.IdJugador, @item.IdPais)">
           </div>
+          }
+
         }
-      
+
 
     </div>
   </div>

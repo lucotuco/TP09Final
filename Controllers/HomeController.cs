@@ -25,6 +25,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        
         ViewBag.Porcentaje=BD.TraerPorcentaje();
         return View();
     }
@@ -93,8 +94,6 @@ public class HomeController : Controller
             }
         }
         BD.AgregarJugador(Jug);
-
-
         return View("Index");
     }
 

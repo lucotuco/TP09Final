@@ -8,13 +8,13 @@ namespace TP09.Models
 
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CEO-016; DataBase=TP09; Trusted_Connection=True";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-009; DataBase=TP09; Trusted_Connection=True";
         private static List<Pais> _ListaPais = new List<Pais>();
         private static List<Estadio> _ListaEstadio = new List<Estadio>();
         private static List<Jugador> _JugadorePais = new List<Jugador>();
         private static List<Jugador> _JugadoresPaquete = new List<Jugador>();
         private static List<Jugador> _Jugadores = new List<Jugador>();
-        private static double Porcentaje;
+        private static int Porcentaje;
 
 
         public static List<Pais> ListarPaises()
@@ -123,9 +123,10 @@ namespace TP09.Models
             string SQL = "SELECT ROUND(CAST((SELECT COUNT(*) FROM Jugador WHERE Pegadas = 1) AS decimal ) *100 / COUNT(*), 1) FROM Jugador ";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                Porcentaje=db.QueryFirstOrDefault<double>(SQL);
+                Porcentaje=db.QueryFirstOrDefault<int>(SQL);
             }
             return Porcentaje;
         }
+
     }
 }
